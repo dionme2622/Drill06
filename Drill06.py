@@ -28,10 +28,13 @@ def Draw_hand(x, y):
     Hand.draw(x, y)
     for i in range(0, len(Point_x)):
         Hand.draw(Point_x[i], Point_y[i])
+def Draw_Character():
+    pass
 
 while running:
     Background.draw(WIDTH // 2, HEIGHT // 2)
     Draw_hand(mx, my)
+    Draw_Character()
     update_canvas()
     Handle_events()
     hide_cursor()
