@@ -10,7 +10,8 @@ running = True
 mx, my = 0, 0
 Point_x = []
 Point_y = []
-
+frame = 0
+x, y = WIDTH // 2, HEIGHT // 2
 
 def Handle_events():
     global running, mx, my, Point_x, Point_y
@@ -29,7 +30,9 @@ def Draw_hand(x, y):
     for i in range(0, len(Point_x)):
         Hand.draw(Point_x[i], Point_y[i])
 def Draw_Character():
-    pass
+    global frame
+    Character.clip_draw(frame * 100, 0, 100, 100, x, y)
+    frame = (frame + 1) % 8
 
 while running:
     Background.draw(WIDTH // 2, HEIGHT // 2)
