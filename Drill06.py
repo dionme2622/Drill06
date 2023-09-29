@@ -6,12 +6,14 @@ open_canvas(WIDTH, HEIGHT)
 Hand = load_image("hand_arrow.png")
 Character = load_image("run_animation.png")
 Background = load_image("TUK_GROUND.png")
+running = True
+mx, my = 0, 0
 Point_x = []
 Point_y = []
 
 
 def Handle_events():
-    global running, mx, my, Click
+    global running, mx, my, Point_x, Point_y
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -22,19 +24,11 @@ def Handle_events():
             if event.button == SDL_BUTTON_LEFT:
                 Point_x.append(mx)
                 Point_y.append(my)
-
-                Click = True
-        elif event.type == SDL_MOUSEBUTTONUP:
-            Click = False
 def Draw_hand(x, y):
     Hand.draw(x, y)
     for i in range(0, len(Point_x)):
         Hand.draw(Point_x[i], Point_y[i])
-    # if Click:
-    #     Hand.draw()
 
-running, Click = True, False
-mx, my = 0, 0
 while running:
     Background.draw(WIDTH // 2, HEIGHT // 2)
     Draw_hand(mx, my)
